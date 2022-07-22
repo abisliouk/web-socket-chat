@@ -21,3 +21,7 @@ To start:
     
 ### Server
         - mvn spring-boot:run (in the spring-ws-server)
+
+### Docker
+        - docker run -d --hostname localhost -p 61613:61613 --name websocket-rabbit rabbitmq:3-management
+        - rabbitmq-plugins enable rabbitmq_stomp
