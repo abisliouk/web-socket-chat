@@ -1,19 +1,17 @@
 package com.byelex.chat.config;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
-public class RabbitConfiguration {
-
-    Logger logger = LoggerFactory.getLogger(RabbitConfiguration.class);
+@Profile("dev1")
+public class RabbitConfigurationDev1 {
 
     @Bean
     public CachingConnectionFactory connectionFactory() {
@@ -31,13 +29,8 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    Queue myQueue1() {
-        return new Queue("myQueue1");
-    }
-
-    @Bean
-    Queue myQueue2() {
-        return new Queue("myQueue2");
+    Queue Dev1Queue() {
+        return new Queue("Dev1Queue");
     }
 
     @Bean
@@ -47,11 +40,6 @@ public class RabbitConfiguration {
 
     @Bean
     Binding binding1(){
-        return BindingBuilder.bind(myQueue1()).to(fanoutExchange());
-    }
-
-    @Bean
-    Binding binding2(){
-        return BindingBuilder.bind(myQueue2()).to(fanoutExchange());
+        return BindingBuilder.bind(Dev1Queue()).to(fanoutExchange());
     }
 }

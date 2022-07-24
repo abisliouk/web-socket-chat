@@ -1,10 +1,8 @@
 package com.byelex.chat.controller;
 
-import com.byelex.chat.config.RabbitMqListener;
 import com.byelex.chat.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
