@@ -16,13 +16,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .withSockJS();
     }
 
-//    @Override
-//    public void configureMessageBroker(MessageBrokerRegistry registry) {
-//        registry.setApplicationDestinationPrefixes("/app")
-//                .enableStompBrokerRelay("/topic", "/queue")
-//                .setRelayHost("localhost")
-//                .setRelayPort(61613)
-//                .setClientLogin("guest")
-//                .setClientPasscode("guest");
-//    }
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.setApplicationDestinationPrefixes("/app")
+                .enableStompBrokerRelay("/topic", "/queue")
+                .setRelayHost("localhost")
+                .setRelayPort(61613)
+                .setClientLogin("guest")
+                .setClientPasscode("guest");
+    }
 }
