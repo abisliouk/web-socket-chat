@@ -7,6 +7,9 @@ const ChatRoom = () => {
     const [privateChats, setPrivateChats] = useState(new Map());
     const [publicChats, setPublicChats] = useState([]);
     const [tab, setTab] = useState("CHATROOM");
+    const [port, setPort] = useState({
+        port: '8086'
+    });
     const [userData, setUserData] = useState({
         username: '',
         receivername: '',
@@ -18,7 +21,7 @@ const ChatRoom = () => {
     }, [userData]);
 
     const connect = () => {
-        let Sock = new SockJS('http://localhost:8087/ws');
+        let Sock = new SockJS('http://localhost:' + port.port + '/ws');
         stompClient = over(Sock);
         stompClient.connect({}, onConnected, onError);
     }
@@ -115,6 +118,11 @@ const ChatRoom = () => {
         setUserData({...userData, "username": value});
     }
 
+    const handlePort = (event) => {
+        const {value} = event.port;
+        setPort({port: value.port});
+    }
+
     const registerUser = () => {
         connect();
     }
@@ -189,6 +197,16 @@ const ChatRoom = () => {
                     <button type="button" onClick={registerUser}>
                         connect
                     </button>
+                </div>}
+                :
+                <div className="register-port">
+                    <input
+                        placeholder="Enter port number"
+                        name="Port"
+                        value={port.port}
+                        onChange={handlePort}
+                        margin="normal"
+                    />
                 </div>}
         </div>
     )
