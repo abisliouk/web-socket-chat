@@ -119,8 +119,8 @@ const ChatRoom = () => {
     }
 
     const handlePort = (event) => {
-        const {value} = event.port;
-        setPort({port: value.port});
+        const {value} = event.target;
+        setPort({"port": value});
     }
 
     const registerUser = () => {
